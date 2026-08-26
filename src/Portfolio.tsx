@@ -21,6 +21,8 @@ import { experiences, skills, projects, education, developerStats, engineeringPr
 // Import UI components
 import { GridBackground, GlowingOrb, TechnicalBorder } from '@/components/ui/Effects'
 
+// Import logo
+
 // Custom Cursor Component
 const CustomCursor: React.FC = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 })
@@ -129,9 +131,9 @@ const Navbar: React.FC = () => {
           aria-label="Home"
         >
           <img
-            src="/favicon.png"
-            alt="AS Logo"
-            className="h-10 w-auto"
+            src="/logo.png"
+            alt="Anshul Sharma Logo"
+            className="h-10 w-auto object-contain"
           />
         </button>
 
