@@ -981,9 +981,9 @@ LinkedIn: linkedin.com/in/yourusername`,
             </div>
 
             {/* Terminal Output */}
-            <div className="p-6 font-mono text-sm min-h-[300px] bg-dark-950/50 text-gray-300">
+            <div className="p-6 font-mono text-sm min-h-[300px] bg-dark-950/50 text-gray-300 whitespace-pre-wrap">
               {output.map((line, i) => (
-                <div key={i} className="mb-2">
+                <div key={i} className="mb-1">
                   {line}
                 </div>
               ))}
