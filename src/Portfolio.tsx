@@ -1318,6 +1318,11 @@ const Footer: React.FC = () => {
 
 // Main Portfolio Component
 const Portfolio: React.FC = () => {
+  useEffect(() => {
+    // Reset scroll position on page load
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <div className="min-h-screen bg-dark-950">
       {/* Custom Cursor */}
