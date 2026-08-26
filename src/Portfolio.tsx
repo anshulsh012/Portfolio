@@ -129,7 +129,7 @@ const Navbar: React.FC = () => {
           aria-label="Home"
         >
           <img
-            src="/favicon.png"
+            src="public/favicon.png"
             alt="AS Logo"
             className="h-10 w-auto"
           />
