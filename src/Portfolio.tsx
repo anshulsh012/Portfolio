@@ -131,7 +131,7 @@ const Navbar: React.FC = () => {
           aria-label="Home"
         >
           <img
-            src="/logo.png"
+            src={`${import.meta.env.BASE_URL}logo.png`}
             alt="Anshul Sharma Logo"
             className="h-10 w-auto object-contain"
           />
