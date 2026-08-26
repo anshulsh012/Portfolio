@@ -887,14 +887,7 @@ const TerminalSection: React.FC = () => {
   const [output, setOutput] = useState<string[]>([
     'Welcome to Anshul Sharma\'s Developer Terminal',
     '',
-    'Available Commands:',
-    '  help       - Show this help message',
-    '  about      - Brief introduction',
-    '  skills     - Display technical stack',
-    '  projects   - Show selected projects',
-    '  experience - View work history',
-    '  contact    - Contact information',
-    '  clear      - Clear terminal',
+    'Type "help" for available commands',
     '',
   ])
   const [showCursor, setShowCursor] = useState(true)
