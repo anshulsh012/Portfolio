@@ -931,9 +931,9 @@ For more details visit the Projects section.`,
 Syncglob Private Limited - MERN Stack Development Intern (2024)
 CodSoft - Python Programming Intern (2024)
 For more details visit the Experience section.`,
-    contact: `Email: anshul.sharma@example.com
-GitHub: github.com/yourusername
-LinkedIn: linkedin.com/in/yourusername
+    contact: `Email: anshulsh012@gmail.com
+GitHub: https://github.com/anshulsh012
+LinkedIn: https://www.linkedin.com/in/anshul-sharma0001/
 For more details visit the Contact section.`,
     clear: '',
   }
@@ -1220,7 +1220,7 @@ const Contact: React.FC = () => {
 
               <div className="space-y-4">
                 <a
-                  href="mailto:anshul.sharma@example.com"
+                  href="mailto:anshulsh012@gmail.com"
                   className="flex items-center gap-4 p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors group"
                 >
                   <div className="p-3 bg-cyan-500/10 rounded-full group-hover:bg-cyan-500/20 transition-colors">
@@ -1229,13 +1229,13 @@ const Contact: React.FC = () => {
                   <div>
                     <div className="text-sm text-gray-500">Email</div>
                     <div className="text-gray-300 group-hover:text-cyan-400 transition-colors">
-                      anshul.sharma@example.com
+                      anshulsh012@gmail.com
                     </div>
                   </div>
                 </a>
 
                 <a
-                  href="https://github.com"
+                  href="https://github.com/anshulsh012"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors group"
@@ -1246,13 +1246,13 @@ const Contact: React.FC = () => {
                   <div>
                     <div className="text-sm text-gray-500">GitHub</div>
                     <div className="text-gray-300 group-hover:text-cyan-400 transition-colors">
-                      github.com/yourusername
+                      github.com/anshulsh012
                     </div>
                   </div>
                 </a>
 
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/anshul-sharma0001/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors group"
@@ -1263,7 +1263,7 @@ const Contact: React.FC = () => {
                   <div>
                     <div className="text-sm text-gray-500">LinkedIn</div>
                     <div className="text-gray-300 group-hover:text-cyan-400 transition-colors">
-                      linkedin.com/in/yourusername
+                      linkedin.com/in/anshul-sharma0001
                     </div>
                   </div>
                 </a>
