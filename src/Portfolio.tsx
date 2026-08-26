@@ -977,7 +977,7 @@ For more details visit the Contact section.`,
   return (
     <section id="terminal" className="py-32 relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 TERMINAL-ACCESS-HEADING">
           <span className="text-cyan-500 font-mono text-sm tracking-widest">TERMINAL ACCESS</span>
           <h2 className="text-4xl md:text-5xl font-bold mt-4">Developer Console</h2>
         </div>
@@ -1319,8 +1319,11 @@ const Footer: React.FC = () => {
 // Main Portfolio Component
 const Portfolio: React.FC = () => {
   useEffect(() => {
-    // Reset scroll position on page load
-    window.scrollTo(0, 0)
+    // Scroll to terminal section title on page load
+    const terminalTitle = document.querySelector('.TERMINAL-ACCESS-HEADING')
+    if (terminalTitle) {
+      terminalTitle.scrollIntoView({ behavior: 'smooth' })
+    }
   }, [])
 
   return (
