@@ -899,6 +899,8 @@ const TerminalSection: React.FC = () => {
   ])
   const [showCursor, setShowCursor] = useState(true)
   const terminalEndRef = useRef<HTMLDivElement>(null)
+  const [commandHistory, setCommandHistory] = useState<string[]>([])
+  const [currentCommandIndex, setCurrentCommandIndex] = useState(-1)
 
   useEffect(() => {
     const timer = setInterval(() => setShowCursor((prev) => !prev), 500)
@@ -921,21 +923,26 @@ const TerminalSection: React.FC = () => {
     about: `Name: Anshul Sharma
 Role: Software Engineer
 Education: B.Tech in Computer Science & Engineering, Amity University
-Focus: Backend Systems, Full-Stack Development, APIs, Automation`,
+Focus: Backend Systems, Full-Stack Development, APIs, Automation
+For more details visit the About section.`,
     skills: `Python | FastAPI | React | Node.js | Express.js
 MySQL | MongoDB
 RabbitMQ | Redis | Celery
 Docker | Git | Render
-REST APIs | Authentication | Testing`,
+REST APIs | Authentication | Testing
+For more details visit the Skills section.`,
     projects: `1. Rental Application - Full-stack rental platform
 2. MERN Task Management System - Productivity app
-3. Python Utilities - Automation tools and utilities`,
+3. Python Utilities - Automation tools and utilities
+For more details visit the Projects section.`,
     experience: `GlobalLogic India Limited - Software Engineer Intern (2025)
 Syncglob Private Limited - MERN Stack Development Intern (2024)
-CodSoft - Python Programming Intern (2024)`,
+CodSoft - Python Programming Intern (2024)
+For more details visit the Experience section.`,
     contact: `Email: anshul.sharma@example.com
 GitHub: github.com/yourusername
-LinkedIn: linkedin.com/in/yourusername`,
+LinkedIn: linkedin.com/in/yourusername
+For more details visit the Contact section.`,
     clear: '',
   }
 
@@ -951,7 +958,26 @@ LinkedIn: linkedin.com/in/yourusername`,
       const response = commands[command] || `Command not found: ${command}. Type "help" for available commands.`
 
       setOutput((prev) => [...prev, `> ${input}`, response, ''])
+      setCommandHistory((prev) => [...prev, input])
+      setCurrentCommandIndex(commandHistory.length)
       setInput('')
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault()
+      if (commandHistory.length > 0 && currentCommandIndex > 0) {
+        const newIndex = currentCommandIndex - 1
+        setCurrentCommandIndex(newIndex)
+        setInput(commandHistory[newIndex])
+      }
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault()
+      if (currentCommandIndex < commandHistory.length - 1) {
+        const newIndex = currentCommandIndex + 1
+        setCurrentCommandIndex(newIndex)
+        setInput(commandHistory[newIndex])
+      } else {
+        setCurrentCommandIndex(commandHistory.length)
+        setInput('')
+      }
     }
   }
 
@@ -980,18 +1006,8 @@ LinkedIn: linkedin.com/in/yourusername`,
               </div>
             </div>
 
-            {/* Terminal Output */}
-            <div className="p-6 font-mono text-sm min-h-[300px] bg-dark-950/50 text-gray-300 whitespace-pre-wrap">
-              {output.map((line, i) => (
-                <div key={i} className="mb-1">
-                  {line}
-                </div>
-              ))}
-              <div ref={terminalEndRef} />
-            </div>
-
             {/* Terminal Input */}
-            <div className="p-4 bg-dark-900 border-t border-white/10">
+            <div className="p-4 bg-dark-900 border-b border-white/10">
               <div className="flex font-mono text-sm">
                 <span className="text-cyan-400 mr-2">anshul@portfolio:~$</span>
                 <input
@@ -1005,6 +1021,16 @@ LinkedIn: linkedin.com/in/yourusername`,
                 />
                 {showCursor && <span className="text-cyan-400 animate-pulse">|</span>}
               </div>
+            </div>
+
+            {/* Terminal Output */}
+            <div className="p-6 font-mono text-sm min-h-[300px] bg-dark-950/50 text-gray-300 whitespace-pre-wrap">
+              {output.map((line, i) => (
+                <div key={i} className="mb-1">
+                  {line}
+                </div>
+              ))}
+              <div ref={terminalEndRef} />
             </div>
           </div>
         </div>
