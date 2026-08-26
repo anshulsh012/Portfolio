@@ -900,9 +900,6 @@ const TerminalSection: React.FC = () => {
     return () => clearInterval(timer)
   }, [])
 
-  useEffect(() => {
-    terminalEndRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }, [output])
 
   const commands: Record<string, string> = {
     help: `Available Commands:
