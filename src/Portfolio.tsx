@@ -125,9 +125,14 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto px-6 flex items-center justify-between">
         <button
           onClick={() => scrollTo('home')}
-          className="font-mono font-bold text-xl hover:text-cyan-400 transition-colors"
+          className="hover:opacity-80 transition-opacity"
+          aria-label="Home"
         >
-          AS
+          <img
+            src="/favicon.png"
+            alt="AS Logo"
+            className="h-10 w-auto"
+          />
         </button>
 
         {/* Desktop Navigation */}
