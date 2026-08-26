@@ -684,15 +684,17 @@ const Projects: React.FC = () => {
 
                     {/* Links */}
                     <div className="flex gap-4">
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 rounded transition-colors"
-                      >
-                        <Github size={18} />
-                        <span>GitHub</span>
-                      </a>
+                      {project.github && (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 rounded transition-colors"
+                        >
+                          <Github size={18} />
+                          <span>GitHub</span>
+                        </a>
+                      )}
                       {project.demo && (
                         <a
                           href={project.demo}

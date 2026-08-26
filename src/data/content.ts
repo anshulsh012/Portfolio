@@ -117,7 +117,6 @@ export const projects: Project[] = [
       'User authentication and authorization system',
       'Responsive frontend with modern UI components'
     ],
-    github: 'https://github.com/yourusername/rental-application',
     fullDescription: 'A comprehensive rental application that enables users to browse properties, manage listings, and handle bookings. The system features a React-based frontend with a clean, responsive interface, coupled with a robust FastAPI backend for handling business logic. MySQL serves as the primary database, storing property information, user accounts, and booking records. The application follows REST API best practices with proper error handling, validation, and authentication middleware.'
   },
   {
@@ -133,7 +132,6 @@ export const projects: Project[] = [
       'Task CRUD operations with frontend state management',
       'Real-time updates and notifications'
     ],
-    github: 'https://github.com/yourusername/task-management',
     fullDescription: 'A full-stack task management application enabling users to organize their tasks efficiently. Built entirely on the MERN stack, this application features a React frontend with intuitive UI components, Express.js for RESTful API endpoints, Node.js for server-side logic, and MongoDB for data persistence. The system supports user authentication, task creation and management, category organization, and status tracking with real-time updates.'
   },
   {
