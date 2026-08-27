@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from 'react'
 import {
   Menu,
   X,
-  Github,
-  Linkedin,
+  GithubIcon,
+  LinkedinIcon,
   Mail,
   Cpu,
   Database,
@@ -121,13 +121,13 @@ const Navbar: React.FC = () => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'glass-panel py-3' : 'bg-transparent py-6'
+        scrolled ? 'glass-panel py-3 shadow-lg' : 'bg-transparent py-4'
       }`}
     >
-      <div className="container mx-auto px-6 flex items-center justify-between">
+      <div className="container mx-auto px-4 sm:px-6 flex items-center justify-between">
         <button
           onClick={() => scrollTo('home')}
-          className="hover:opacity-80 transition-opacity"
+          className="hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-cyan-400 rounded"
           aria-label="Home"
         >
           <img
@@ -138,18 +138,18 @@ const Navbar: React.FC = () => {
         </button>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-2 sm:space-x-4">
           {sections.map((section) => (
             <button
               key={section.id}
               onClick={() => scrollTo(section.id)}
-              className={`text-sm font-medium transition-all duration-300 relative group ${
+              className={`text-sm font-medium transition-all duration-300 relative group px-2 py-1 rounded ${
                 activeSection === section.id ? 'text-cyan-400' : 'text-gray-400 hover:text-white'
               }`}
             >
               {section.label}
               <span
-                className={`absolute -bottom-1 left-0 h-0.5 bg-cyan-400 transition-all duration-300 ${
+                className={`absolute -bottom-1 left-2 right-2 h-0.5 bg-cyan-400 transition-all duration-300 ${
                   activeSection === section.id ? 'w-full' : 'w-0 group-hover:w-full'
                 }`}
               />
@@ -159,8 +159,10 @@ const Navbar: React.FC = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-white"
+          className="md:hidden text-white p-2 focus:outline-none focus:ring-2 focus:ring-cyan-400 rounded"
           onClick={() => setIsOpen(!isOpen)}
+          aria-expanded={isOpen}
+          aria-label="Toggle menu"
         >
           {isOpen ? <X /> : <Menu />}
         </button>
@@ -168,14 +170,14 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 glass-panel border-t border-white/10">
-          <div className="flex flex-col p-4 space-y-4">
+        <div className="md:hidden absolute top-full left-0 right-0 glass-panel border-t border-white/10 shadow-xl">
+          <div className="flex flex-col p-4 space-y-2">
             {sections.map((section) => (
               <button
                 key={section.id}
                 onClick={() => scrollTo(section.id)}
-                className={`text-left px-4 py-2 rounded-lg transition-colors ${
-                  activeSection === section.id ? 'bg-cyan-500/10 text-cyan-400' : 'hover:bg-white/5'
+                className={`text-left px-4 py-3 rounded-lg transition-colors ${
+                  activeSection === section.id ? 'bg-cyan-500/10 text-cyan-400 font-semibold' : 'hover:bg-white/5'
                 }`}
               >
                 {section.label}
@@ -191,16 +193,16 @@ const Navbar: React.FC = () => {
 // Hero Section
 const Hero: React.FC = () => {
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative pt-20">
-      <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
+    <section id="home" className="min-h-screen flex items-center justify-center relative pt-24 pb-12 sm:pt-20 sm:pb-8">
+      <div className="container mx-auto px-4 sm:px-6 grid lg:grid-cols-2 gap-8 sm:gap-12 items-center relative z-10">
         {/* Hero Content */}
-        <div className="space-y-8">
+        <div className="space-y-6 sm:space-y-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl font-bold font-display tracking-tight leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold font-display tracking-tight leading-tight">
               ANSHUL <br />
               <span className="text-gradient">SHARMA</span>
             </h1>
@@ -211,8 +213,8 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h2 className="text-2xl md:text-3xl text-gray-300 font-light">
-              Software Engineer <span className="mx-2">|</span> Backend Developer <span className="mx-2">|</span> Full-Stack Developer
+            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-300 font-light">
+              Software Engineer <span className="mx-1 sm:mx-2">|</span> Backend Developer <span className="mx-1 sm:mx-2">|</span> Full-Stack Developer
             </h2>
           </motion.div>
 
@@ -222,7 +224,7 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="space-y-4"
           >
-            <blockquote className="text-xl md:text-2xl text-gray-300 font-light leading-relaxed">
+            <blockquote className="text-lg sm:text-xl md:text-2xl text-gray-300 font-light leading-relaxed">
               "Building scalable software, intelligent systems, and modern web experiences."
             </blockquote>
           </motion.div>
@@ -233,7 +235,7 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="pt-4"
           >
-            <p className="text-gray-400 max-w-lg leading-relaxed">
+            <p className="text-gray-400 max-w-2xl leading-relaxed text-sm sm:text-base">
               Computer Science & Engineering graduate passionate about building reliable backend systems, full-stack applications, APIs, automation, and practical software products.
             </p>
           </motion.div>
@@ -242,18 +244,18 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex flex-wrap gap-4 pt-8"
+            className="flex flex-wrap gap-3 sm:gap-4 pt-6 sm:pt-8"
           >
             <button
               onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-              className="px-8 py-4 bg-cyan-600 hover:bg-cyan-500 text-white font-semibold rounded-lg transition-all duration-300 hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] flex items-center gap-2"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-cyan-600 hover:bg-cyan-500 text-white font-semibold rounded-lg transition-all duration-300 hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] flex items-center justify-center gap-2 text-sm sm:text-base"
             >
               <Code size={20} />
-              View My Work
+              <span className="hidden sm:inline">View My Work</span>
             </button>
             <button
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="px-8 py-4 bg-transparent border border-white/20 hover:border-white/40 text-white font-semibold rounded-lg transition-all duration-300 hover:bg-white/5"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-transparent border border-white/20 hover:border-white/40 text-white font-semibold rounded-lg transition-all duration-300 hover:bg-white/5 text-sm sm:text-base"
             >
               Let's Connect
             </button>
@@ -265,7 +267,7 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="hidden lg:block relative h-[600px]"
+          className="hidden lg:block relative max-h-[500px]"
         >
           {/* Abstract technical network visualization */}
           <div className="absolute inset-0 flex items-center justify-center">
@@ -273,7 +275,7 @@ const Hero: React.FC = () => {
               {/* Outer ring */}
               <div className="absolute inset-0 border border-cyan-500/20 rounded-full animate-[spin_20s_linear_infinite]" />
               <div className="absolute inset-[20%] border border-violet-500/20 rounded-full animate-[spin_15s_linear_infinite_reverse]" />
-              <div className="absolute inset-[40%] border border-cyan-500/10 rounded-full animate-[spin_10s_linear_infinite]" />
+              <div className="absolute inset-[40%] border border-amber-500/10 rounded-full animate-[spin_10s_linear_infinite]" />
 
               {/* Connecting nodes */}
               <div className="absolute top-0 left-1/2 w-px h-24 bg-cyan-500/30" />
@@ -333,20 +335,20 @@ const Hero: React.FC = () => {
 // About Section
 const About: React.FC = () => {
   return (
-    <section id="about" className="py-32 relative">
-      <div className="container mx-auto px-6 relative z-10">
+    <section id="about" className="py-20 sm:py-24 md:py-32 relative">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-10 sm:mb-16 text-center sm:text-left"
         >
           <span className="text-cyan-500 font-mono text-sm tracking-widest">01 / ABOUT</span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-4">Engineer. Builder. Problem Solver.</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mt-4">Engineer. Builder. Problem Solver.</h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-6 sm:gap-8">
           {/* Developer Profile Card */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -355,38 +357,38 @@ const About: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="lg:col-span-1"
           >
-            <TechnicalBorder className="glass-panel p-8 h-full">
+            <TechnicalBorder className="glass-panel p-6 sm:p-8 h-full">
               <h3 className="font-mono text-cyan-400 mb-6 border-b border-white/10 pb-4">
                 DEVELOPER PROFILE
               </h3>
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 <div>
-                  <p className="text-gray-500 text-sm uppercase tracking-wider mb-1">Name</p>
-                  <p className="text-xl font-medium">Anshul Sharma</p>
+                  <p className="text-gray-500 text-xs sm:text-sm uppercase tracking-wider mb-1">Name</p>
+                  <p className="text-lg sm:text-xl font-medium">Anshul Sharma</p>
                 </div>
                 <div>
-                  <p className="text-gray-500 text-sm uppercase tracking-wider mb-1">Role</p>
-                  <p className="text-xl font-medium">Software Engineer</p>
+                  <p className="text-gray-500 text-xs sm:text-sm uppercase tracking-wider mb-1">Role</p>
+                  <p className="text-lg sm:text-xl font-medium">Software Engineer</p>
                 </div>
                 <div>
-                  <p className="text-gray-500 text-sm uppercase tracking-wider mb-1">Education</p>
-                  <p className="text-lg">B.Tech in Computer Science & Engineering</p>
-                  <p className="text-gray-400 text-sm mt-1">Amity University</p>
-                  <p className="text-cyan-400 text-sm mt-1 font-medium">{education.status}</p>
+                  <p className="text-gray-500 text-xs sm:text-sm uppercase tracking-wider mb-1">Education</p>
+                  <p className="text-base sm:text-lg">B.Tech in Computer Science & Engineering</p>
+                  <p className="text-gray-400 text-xs sm:text-sm mt-1">Amity University</p>
+                  <p className="text-cyan-400 text-xs sm:text-sm mt-1 font-medium">{education.status}</p>
                 </div>
                 <div>
-                  <p className="text-gray-500 text-sm uppercase tracking-wider mb-1">Focus</p>
+                  <p className="text-gray-500 text-xs sm:text-sm uppercase tracking-wider mb-1">Focus</p>
                   <div className="flex flex-wrap gap-2">
                     {['Backend Systems', 'Full-Stack', 'APIs', 'Automation'].map((tag) => (
-                      <span key={tag} className="px-3 py-1 bg-white/5 rounded text-sm text-cyan-300">
+                      <span key={tag} className="px-2 sm:px-3 py-1 bg-white/5 rounded text-xs sm:text-sm text-cyan-300">
                         {tag}
                       </span>
                     ))}
                   </div>
                 </div>
                 <div>
-                  <p className="text-gray-500 text-sm uppercase tracking-wider mb-1">Current Mode</p>
-                  <p className="text-lg">Building • Learning • Shipping</p>
+                  <p className="text-gray-500 text-xs sm:text-sm uppercase tracking-wider mb-1">Current Mode</p>
+                  <p className="text-base sm:text-lg">Building • Learning • Shipping</p>
                 </div>
               </div>
             </TechnicalBorder>
@@ -400,14 +402,14 @@ const About: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="lg:col-span-2"
           >
-            <div className="glass-panel p-8 h-full">
-              <p className="text-lg leading-relaxed text-gray-300 mb-6">
+            <div className="glass-panel p-6 sm:p-8 h-full">
+              <p className="text-base sm:text-lg leading-relaxed text-gray-300 mb-6">
                 I'm a Computer Science & Engineering graduate with a passion for building practical software systems. My focus lies in backend development, full-stack applications, and creating efficient APIs that power modern web experiences.
               </p>
-              <p className="text-lg leading-relaxed text-gray-300 mb-6">
+              <p className="text-base sm:text-lg leading-relaxed text-gray-300 mb-6">
                 What drives me is the process of turning abstract problems into concrete solutions. I enjoy architecting systems that are not just functional, but scalable, maintainable, and well-integrated. Whether it's designing database schemas, building RESTful APIs, or creating intuitive user interfaces, I approach each project with an engineering mindset.
               </p>
-              <p className="text-lg leading-relaxed text-gray-300">
+              <p className="text-base sm:text-lg leading-relaxed text-gray-300">
                 I believe in shipping working software rather than staying in the realm of theory. Each project I work on is an opportunity to learn, improve, and create something tangible that solves real problems.
               </p>
             </div>
@@ -421,9 +423,9 @@ const About: React.FC = () => {
 // Engineering Philosophy Section
 const EngineeringPhilosophy: React.FC = () => {
   return (
-    <section id="engineering" className="py-32 relative">
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-20">
+    <section id="engineering" className="py-20 sm:py-24 md:py-32 relative">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="text-center mb-12 sm:mb-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -431,11 +433,11 @@ const EngineeringPhilosophy: React.FC = () => {
             transition={{ duration: 0.6 }}
           >
             <span className="text-cyan-500 font-mono text-sm tracking-widest">HOW I BUILD</span>
-            <h2 className="text-4xl md:text-5xl font-bold mt-4">Engineering Philosophy</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mt-4">Engineering Philosophy</h2>
           </motion.div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {engineeringPrinciples.map((principle, index) => (
             <motion.div
               key={principle.id}
@@ -445,14 +447,14 @@ const EngineeringPhilosophy: React.FC = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="group"
             >
-              <div className="glass-panel p-8 h-full hover:bg-white/5 transition-colors duration-300">
-                <div className="text-6xl font-bold text-white/5 mb-4 group-hover:text-cyan-500/30 transition-colors">
+              <div className="glass-panel p-4 sm:p-6 lg:p-8 h-full hover:bg-white/5 transition-colors duration-300">
+                <div className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white/5 mb-4 group-hover:text-cyan-500/30 transition-colors">
                   {principle.id.toString().padStart(2, '0')}
                 </div>
-                <h3 className="text-xl font-semibold mb-3 text-cyan-400">{principle.title}</h3>
-                <p className="text-gray-300 mb-4">{principle.description}</p>
+                <h3 className="text-base sm:text-lg lg:text-xl font-semibold mb-3 text-cyan-400">{principle.title}</h3>
+                <p className="text-gray-300 mb-4 text-sm sm:text-base">{principle.description}</p>
                 <div className="h-0 overflow-hidden group-hover:h-auto transition-all duration-300">
-                  <p className="text-sm text-gray-500">{principle.details}</p>
+                  <p className="text-xs sm:text-sm text-gray-500">{principle.details}</p>
                 </div>
               </div>
             </motion.div>
@@ -470,27 +472,27 @@ const Experience: React.FC = () => {
   const scaleX = useTransform(scrollYProgress, [0, 1], [0, 1])
 
   return (
-    <section id="experience" className="py-32 relative">
-      <div className="container mx-auto px-6 relative z-10">
+    <section id="experience" className="py-20 sm:py-24 md:py-32 relative">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-10 sm:mb-16 text-center sm:text-left"
         >
           <span className="text-cyan-500 font-mono text-sm tracking-widest">02 / EXPERIENCE</span>
-          <h2 className="text-4xl md:text-5xl font-bold mt-4">Professional Journey</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mt-4">Professional Journey</h2>
         </motion.div>
 
         <div className="relative" ref={containerRef}>
           {/* Timeline Line */}
           <motion.div
-            className="absolute left-[50%] top-0 bottom-0 w-px bg-gradient-to-b from-cyan-500/30 via-cyan-500 to-transparent -translate-x-1/2"
+            className="absolute left-4 sm:left-1/2 top-0 bottom-0 w-px sm:w-px bg-gradient-to-b from-cyan-500/30 via-cyan-500 to-transparent -translate-x-1/2 sm:translate-x-0"
             style={{ scaleX }}
           />
 
-          <div className="space-y-12">
+          <div className="space-y-8 sm:space-y-12">
             {experiences.map((exp, index) => (
               <motion.div
                 key={exp.id}
@@ -498,30 +500,31 @@ const Experience: React.FC = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`relative ${index % 2 === 0 ? 'lg:pr-32' : 'lg:pl-32'}`}
+                className={`relative ${index % 2 === 0 ? 'pr-0 sm:pr-12 lg:pr-32 text-left sm:text-left' : 'pl-0 sm:pl-12 lg:pl-32 text-left sm:text-left'}`}
               >
                 {/* Timeline Node */}
-                <div className="absolute left-[50%] top-0 w-4 h-4 bg-cyan-500 rounded-full -translate-x-1/2 border-4 border-dark-900 z-10" />
-
-                <div className="glass-panel p-6 md:p-8">
-                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-semibold mb-2">{exp.company}</h3>
-                      <p className="text-cyan-400 font-medium mb-3">{exp.role}</p>
-                      <div className="flex flex-wrap gap-4 text-sm text-gray-500 font-mono mb-4">
-                        <span>{exp.year}</span>
-                        <span className="text-gray-700">|</span>
-                        <span>{exp.tech}</span>
+                <div className={`absolute left-4 sm:left-1/2 top-0 w-4 h-4 bg-cyan-500 rounded-full -translate-x-1/2 border-4 border-dark-900 z-10 sm:translate-x-0 ${index % 2 === 0 ? 'sm:left-1/2' : 'sm:left-1/2'}`} />
+                <div className="ml-12 sm:ml-0 sm:ml-0 lg:ml-32">
+                  <div className="glass-panel p-4 sm:p-6 md:p-8">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                      <div className="flex-1">
+                        <h3 className="text-xl sm:text-2xl font-semibold mb-2">{exp.company}</h3>
+                        <p className="text-cyan-400 font-medium mb-3">{exp.role}</p>
+                        <div className="flex flex-wrap gap-4 text-sm text-gray-500 font-mono mb-4">
+                          <span>{exp.year}</span>
+                          <span className="text-gray-700">|</span>
+                          <span>{exp.tech}</span>
+                        </div>
+                        <p className="text-gray-300 mb-4 text-sm sm:text-base">{exp.description}</p>
+                        <ul className="space-y-2 text-sm text-gray-400">
+                          {exp.details.map((detail, i) => (
+                            <li key={i} className="flex items-start gap-2">
+                              <CheckCircle size={16} className="text-cyan-500 shrink-0 mt-0.5" />
+                              <span>{detail}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
-                      <p className="text-gray-300 mb-4">{exp.description}</p>
-                      <ul className="space-y-2 text-sm text-gray-400">
-                        {exp.details.map((detail, i) => (
-                          <li key={i} className="flex items-start gap-2">
-                            <CheckCircle size={16} className="text-cyan-500 shrink-0 mt-0.5" />
-                            <span>{detail}</span>
-                          </li>
-                        ))}
-                      </ul>
                     </div>
                   </div>
                 </div>
@@ -691,7 +694,7 @@ const Projects: React.FC = () => {
                           rel="noopener noreferrer"
                           className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 rounded transition-colors"
                         >
-                          <Github size={18} />
+                          <GithubIcon size={18} />
                           <span>GitHub</span>
                         </a>
                       )}
@@ -1117,16 +1120,35 @@ const Contact: React.FC = () => {
   const [formState, setFormState] = useState({ name: '', email: '', message: '' })
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    setStatus('submitting')
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('submitting');
 
-    // Simulate form submission
-    setTimeout(() => {
-      setStatus('success')
-      setFormState({ name: '', email: '', message: '' })
-      setTimeout(() => setStatus('idle'), 3000)
-    }, 1500)
+    try {
+      const response = await fetch('https://formspree.io/f/mnpqavka', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+        },
+        body: new URLSearchParams({
+          name: formState.name,
+          email: formState.email,
+          message: formState.message,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      setStatus('success');
+      setFormState({ name: '', email: '', message: '' });
+      // Reset status after a few seconds
+      setTimeout(() => setStatus('idle'), 3000);
+    } catch (err) {
+      console.error(err);
+      setStatus('error');
+    }
   }
 
   return (
@@ -1241,7 +1263,7 @@ const Contact: React.FC = () => {
                   className="flex items-center gap-4 p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors group"
                 >
                   <div className="p-3 bg-white/5 rounded-full group-hover:bg-white/10 transition-colors">
-                    <Github size={20} className="text-gray-300" />
+                    <GithubIcon size={20} className="text-gray-300" />
                   </div>
                   <div>
                     <div className="text-sm text-gray-500">GitHub</div>
