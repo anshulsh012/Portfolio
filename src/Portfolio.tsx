@@ -1280,7 +1280,7 @@ const Contact: React.FC = () => {
                   className="flex items-center gap-4 p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors group"
                 >
                   <div className="p-3 bg-white/5 rounded-full group-hover:bg-white/10 transition-colors">
-                    <Linkedin size={20} className="text-gray-300" />
+                    <LinkedinIcon size={20} className="text-gray-300" />
                   </div>
                   <div>
                     <div className="text-sm text-gray-500">LinkedIn</div>
