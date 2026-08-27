@@ -235,7 +235,7 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="pt-4"
           >
-            <p className="text-gray-400 max-w-2xl leading-relaxed text-sm sm:text-base">
+            <p className="text-gray-400 max-w-screen-sm leading-relaxed text-sm sm:text-base">
               Computer Science & Engineering graduate passionate about building reliable backend systems, full-stack applications, APIs, automation, and practical software products.
             </p>
           </motion.div>
@@ -271,7 +271,7 @@ const Hero: React.FC = () => {
         >
           {/* Abstract technical network visualization */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="relative w-[500px] h-[500px]">
+            <div className="relative w-full max-h-screen">
               {/* Outer ring */}
               <div className="absolute inset-0 border border-cyan-500/20 rounded-full animate-[spin_20s_linear_infinite]" />
               <div className="absolute inset-[20%] border border-violet-500/20 rounded-full animate-[spin_15s_linear_infinite_reverse]" />
