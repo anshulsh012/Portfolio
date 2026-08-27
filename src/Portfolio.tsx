@@ -1378,12 +1378,12 @@ const Portfolio: React.FC = () => {
 
       {/* Floating technical elements */}
       <GlowingOrb
-        className="top-1/4 left-1/4 w-96 h-96"
+        className="top-1/4 left-1/4 w-16 h-16 md:w-20 lg:w-24"
         color="cyan"
         delay={0}
       />
       <GlowingOrb
-        className="bottom-1/4 right-1/4 w-96 h-96"
+        className="bottom-1/4 right-1/4 w-16 h-16 md:w-20 lg:w-24"
         color="violet"
         delay={2}
       />
